@@ -51,7 +51,7 @@ public class GameScreen implements Screen {
 		for (int i = 0; i < scores.length; i++)
 			scores[i] = 0;
 		
-		this.roundNumber = 0;
+		this.roundNumber = 1;
 		this.betweenRoundTimer = 0;
 		this.roundOver = false;
 		this.winner = -1;
@@ -75,8 +75,7 @@ public class GameScreen implements Screen {
 		world.add(players[0]);
 		world.add(players[1]);
 		
-		Map map = MapCodex.SAND;
-		world.loadMap(map, players);
+		world.loadMap(GameEngine.map, players);
 	}
 	
 	private boolean isXDown = false;

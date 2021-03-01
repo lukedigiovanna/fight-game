@@ -25,10 +25,12 @@ import fightGame.world.World;
 public class GameEngine {
 	public static final int TARGET_TPS = 50;
 	
+	public static Map map;
+	
 	private static MainPanel panel;
 	private static BufferedImage screen;
 	
-	public static Screen MAIN_SCREEN, GAME_SCREEN;
+	public static Screen MAIN_SCREEN, GAME_SCREEN, MAP_SCREEN;
 	private static Screen currentScreen;
 	
 	private static Process pythonProcess;
@@ -37,7 +39,10 @@ public class GameEngine {
 		panel = inPanel;
 		screen = panel.getScreen();
 		
+		map = MapCodex.MAP_1;
+		
 		MAIN_SCREEN = new MainScreen();
+		MAP_SCREEN = new MapScreen();
 		GAME_SCREEN = new GameScreen();
 		
 		setScreen(MAIN_SCREEN);

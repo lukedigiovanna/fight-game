@@ -35,6 +35,8 @@ public class Camera {
 	private final float strafeSpeed = 2.0f, resizeSpeed = 2.0f;
 	public void update(float dt) {
 		Position position = this.world.averagePositionOfPlayers();
+		if (position.y > 10)
+			this.position.y = 10;
 		Position targetPosition = new Position(0,0);
 		targetPosition.x = position.x - this.dimension.width/2;
 		targetPosition.y = position.y - this.dimension.height/2;
@@ -47,6 +49,10 @@ public class Camera {
 		
 		Rectangle targetDimension = new Rectangle(0, 0);
 		Rectangle max = this.world.maxDistanceBetweenPlayers();
+		if (max.width > 20) {
+			max.width = 20;
+			max.height = 20 / aspectRatio;
+		}
 		// normalize to determine which one to adjust
 		float width = max.width/this.dimension.width, height = max.height/this.dimension.height;
 		if (width > height) {
@@ -68,7 +74,7 @@ public class Camera {
 			this.dimension.width += MathUtils.sign(targetDimension.width - this.dimension.width) * resizeSpeed * dt;
 		if (!MathUtils.isWithin(this.dimension.height, targetDimension.height, 0.05f))
 			this.dimension.height += MathUtils.sign(targetDimension.height - this.dimension.height) * resizeSpeed * dt;
-	
+		
 		this.dimension = targetDimension;
 		
 		this.g = this.display.createGraphics();

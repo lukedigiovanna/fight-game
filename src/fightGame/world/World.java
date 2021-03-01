@@ -182,6 +182,8 @@ public class World {
 		if (map == null)
 			return;
 		
+		camera.setColor(Color.BLACK);
+		camera.fillRect(-100, -100, 200, 200);
 		camera.drawImageAtDistance(map.background, 0, 0, 5, width * 8, height * 8);
 		
 		Entity[] entitiesToDraw = new Entity[entities.size()];

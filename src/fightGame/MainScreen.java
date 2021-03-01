@@ -42,7 +42,7 @@ public class MainScreen implements Screen {
 	private Runnable[] actions = new Runnable[] {
 			new Runnable() {
 				public void run() {
-					GameEngine.setScreen(GameEngine.GAME_SCREEN);
+					GameEngine.setScreen(GameEngine.MAP_SCREEN);
 				}
 			},
 			new Runnable() {
